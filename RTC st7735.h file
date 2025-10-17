@@ -1,0 +1,40 @@
+#ifndef __ST7735_H__
+#define __ST7735_H__
+
+#include "main.h"
+#include "fonts.h"
+
+// TFT control pins
+#define TFT_CS_PORT   GPIOB
+#define TFT_CS_PIN    GPIO_PIN_6
+
+#define TFT_RST_PORT  GPIOC
+#define TFT_RST_PIN   GPIO_PIN_7
+
+#define TFT_DC_PORT   GPIOA
+#define TFT_DC_PIN    GPIO_PIN_6
+
+// TFT colors
+#define ST7735_BLACK   0x0000
+#define ST7735_BLUE    0x001F
+#define ST7735_RED     0xF800
+#define ST7735_GREEN   0x07E0
+#define ST7735_CYAN    0x07FF
+#define ST7735_MAGENTA 0xF81F
+#define ST7735_YELLOW  0xFFE0
+#define ST7735_WHITE   0xFFFF
+
+// SPI handle from main.c
+extern SPI_HandleTypeDef hspi1;
+
+// Functions
+void ST7735_Init(void);
+void ST7735_FillScreen(uint16_t color);
+void ST7735_DrawPixel(uint16_t x, uint16_t y, uint16_t color);
+void ST7735_DrawChar(uint16_t x, uint16_t y, char ch, const FontDef_t *font, uint16_t color, uint16_t bgcolor);
+void ST7735_WriteString(uint16_t x, uint16_t y, const char *str, const FontDef_t *font,
+                        uint16_t color, uint16_t bgcolor);
+void ST7735_WriteCommand(uint8_t cmd);
+void ST7735_WriteData(uint8_t* buff, size_t size);
+
+#endif
