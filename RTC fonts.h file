@@ -1,0 +1,13 @@
+#ifndef FONTS_H
+#define FONTS_H
+#include "main.h"
+
+typedef struct {
+    uint8_t FontWidth;
+    uint8_t FontHeight;
+    const uint8_t *data;
+} FontDef_t;
+
+extern const FontDef_t Font_7x10;
+
+#endif
