@@ -1,0 +1,22 @@
+#ifndef DS3231_H
+#define DS3231_H
+
+#include "main.h"
+
+#define DS3231_ADDRESS 0x68 << 1  // 7-bit address shifted for HAL
+
+typedef struct {
+    uint8_t seconds;
+    uint8_t minutes;
+    uint8_t hours;
+    uint8_t day;
+    uint8_t date;
+    uint8_t month;
+    uint16_t year;
+} DS3231_Time;
+
+void DS3231_GetTime(I2C_HandleTypeDef *hi2c, DS3231_Time *time);
+void DS3231_SetTime(I2C_HandleTypeDef *hi2c, DS3231_Time *time);
+
+#endif
+
